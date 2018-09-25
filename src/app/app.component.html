@@ -1,14 +1,9 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1 (click)="handleTitleClick()">
-    Welcome to {{ title }}!
-  </h1>
-</div>
+<mat-toolbar color="primary">Welcome to {{ title }}! - {{ getDate() | date:'dd MMMM yyyy hh:mm:ss' }}</mat-toolbar>
 
-<amb-poney
-  ambBoost
-  *ngFor="let poney of ponies"
-  (win)="handleWin($event)"
-  [poney]="poney"
-  [hasBoost]="poney.boost"
-></amb-poney>
+<p *ngFor="let poney of ponies">{{ poney | clone }}</p>
+
+<amb-race
+  *ngFor="let race of races"
+  [race]="race"
+>
+</amb-race>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Poney } from './interfaces/poney';
+import { Race } from './interfaces/race';
 
 @Component({
   selector: 'app-root',
@@ -9,42 +10,24 @@ import { Poney } from './interfaces/poney';
 export class AppComponent {
   title = 'AmbientIT';
 
-  ponies: Poney[] = [
+  races: Race[] = [
     {
       "id": 0,
-      "distance": 0,
-      "name": "Fatah",
-      "boost": true,
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-green-running.gif"
+      "name": "Madrid",
+      "poneyIds": [0, 1]
     },
     {
       "id": 1,
-      "distance": 0,
-      "name": "Oussema",
-      "boost": true,
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-orange-running.gif"
-    },
-    {
-      "id": 2,
-      "distance": 0,
-      "name": "Romain",
-      "boost": false,
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-purple-running.gif"
-    },
-    {
-      "id": 3,
-      "distance": 0,
-      "name": "François",
-      "boost": true,
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-blue-running.gif"
+      "name": "Tokyo",
+      "poneyIds": [2, 3]
     }
   ]
   
-  handleTitleClick() {
+  handleTitleClick(): void {
     console.log('title click')
   }
 
-  handleWin(poney: Poney) {
-    console.log(`Victoire de ${poney.name}`)
+  getDate(): Date {
+    return new Date()
   }
 }
