@@ -1,5 +1,5 @@
 import { Poney } from './../../interfaces/poney';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'amb-poney',
@@ -9,10 +9,29 @@ import { Component, Input } from '@angular/core';
 export class PoneyComponent {
 
   @Input() poney: Poney
+  @Output() win: EventEmitter<Poney> = new EventEmitter()
+  intervalId
 
   constructor() { }
 
   ngOnInit() {
+    this.startRunning()
+  }
+
+  startRunning() {
+    this.intervalId = setInterval(() => {
+      this.poney.distance += ( Math.floor(Math.random() * 20) + 1 )
+
+      if (this.poney.distance >= 90) {
+        this.win.emit(this.poney)
+        this.poney.distance = 90
+        this.stopRunning()
+      }
+    }, 1000)
+  }
+
+  stopRunning() {
+    clearInterval(this.intervalId)
   }
 
 }

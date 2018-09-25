@@ -1,5 +1,7 @@
-<img [src]="poney.img" />
-<h2>
-  {{ poney.name }}
-</h2>
-<p>{{ poney.distance + 'm' }}</p>
+<div class="container" [style.left]="poney.distance + '%'">
+  <img [src]="poney.img" />
+  <h2>
+    {{ poney.name }}
+  </h2>
+  <p>{{ poney.distance + 'm' }}</p>
+</div>

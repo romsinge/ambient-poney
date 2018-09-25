@@ -3,4 +3,5 @@ export interface Poney {
   name: string;
   distance: number;
   img: string;
+  boost: boolean;
 }

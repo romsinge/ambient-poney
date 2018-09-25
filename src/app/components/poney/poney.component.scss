@@ -1,0 +1,17 @@
+:host {
+  width: 100%;
+  display: block;
+  
+  .container {
+    display: inline-block;
+    width: 10%;
+    position: relative;
+    left: 0;
+    transition: left 1s linear;
+    color: white;
+
+    img {
+      width: 100%;
+    }
+  }
+}
