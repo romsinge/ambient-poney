@@ -1,8 +1,8 @@
-<h2>{{ race.name }}</h2>
+<h2 *ngIf="race">{{ race.name }}</h2>
 
 <amb-poney
   ambBoost
-  *ngFor="let poney of ponies | filterPonies:race.poneyIds"
+  *ngFor="let poney of ponies$ | async | filterPonies:poneyIds"
   (win)="handleWin($event)"
   [poney]="poney"
   [hasBoost]="poney.boost"

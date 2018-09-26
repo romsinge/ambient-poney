@@ -2,6 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Race } from '../../interfaces/race';
 import { Poney } from '../../interfaces/poney';
 import { UpperCasePipe } from '@angular/common';
+import { PmuService } from '../../services/pmu.service';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'amb-race',
@@ -10,42 +14,29 @@ import { UpperCasePipe } from '@angular/common';
 })
 export class RaceComponent implements OnInit {
 
-  @Input() race: Race
+  race: Race
+  poneyIds: Array<number> = []
 
-  ponies: Poney[] = [
-    {
-      "id": 0,
-      "distance": 0,
-      "name": "Fatah",
-      "boost": true,
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-green-running.gif"
-    },
-    {
-      "id": 1,
-      "distance": 0,
-      "name": "Oussema",
-      "boost": true,
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-orange-running.gif"
-    },
-    {
-      "id": 2,
-      "distance": 0,
-      "name": "Romain",
-      "boost": false,
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-purple-running.gif"
-    },
-    {
-      "id": 3,
-      "distance": 0,
-      "name": "François",
-      "boost": true,
-      "img": "http://ponyracer.ninja-squad.com/assets/images/pony-blue-running.gif"
-    }
-  ]
+  ponies$: Observable<Poney[]>
   
-  constructor(private uppercasePipe: UpperCasePipe) {}
+  constructor(
+    private uppercasePipe: UpperCasePipe,
+    private pmu: PmuService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+
+    this.route.params
+    .pipe(map((urlParams) => urlParams.id))
+    .subscribe((id) => { 
+      this.pmu.getRaceById(id).subscribe(race => {
+        this.race = race
+        this.poneyIds = race.poneyIds
+      })
+    })
+
+    this.ponies$ = this.pmu.ponies
   }
 
   handleWin(poney: Poney): void {

@@ -1,3 +1,4 @@
+import { APP_ROUTES } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgModule } from '@angular/core';
@@ -12,6 +13,10 @@ import { MaterialModule } from './modules/material/material.module';
 import { ClonePipe } from './pipes/clone.pipe';
 import { FilterPoniesPipe } from './pipes/filter-ponies.pipe';
 import { UpperCasePipe } from '@angular/common';
+import { HomeComponent } from './components/home/home.component';
+import { RouterModule } from '@angular/router';
+import { RaceCreateComponent } from './components/race-create/race-create.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,13 +25,17 @@ import { UpperCasePipe } from '@angular/common';
     BoostDirective,
     RaceComponent,
     ClonePipe,
-    FilterPoniesPipe
+    FilterPoniesPipe,
+    HomeComponent,
+    RaceCreateComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule.forRoot(APP_ROUTES),
+    HttpClientModule
   ],
   providers: [
     UpperCasePipe

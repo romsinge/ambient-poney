@@ -1,0 +1,5 @@
+<ul>
+  <li [routerLink]="['/race', race.id]" *ngFor="let race of races$ | async">
+    {{ race.name }}
+  </li>
+</ul>

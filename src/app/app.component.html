@@ -1,9 +1,14 @@
 <mat-toolbar color="primary">Welcome to {{ title }}! - {{ getDate() | date:'dd MMMM yyyy hh:mm:ss' }}</mat-toolbar>
 
-<p *ngFor="let poney of ponies">{{ poney | clone }}</p>
+<!-- <p *ngFor="let poney of ponies">{{ poney | clone }}</p>
 
 <amb-race
   *ngFor="let race of races"
   [race]="race"
 >
-</amb-race>
+</amb-race> -->
+
+<button routerLink="/home" mat-button>Home</button>
+<button routerLink="/race-create" mat-button>Create Race</button>
+
+<router-outlet></router-outlet>

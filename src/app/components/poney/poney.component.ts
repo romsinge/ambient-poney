@@ -1,5 +1,6 @@
 import { Poney } from './../../interfaces/poney';
 import { Component, Input, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Observable, Subscriber } from 'rxjs';
 
 @Component({
   selector: 'amb-poney',
@@ -34,4 +35,8 @@ export class PoneyComponent {
     clearInterval(this.intervalId)
   }
 
+  ngOnDestroy() {
+    this.stopRunning()
+    this.poney.distance = 0
+  }
 }
