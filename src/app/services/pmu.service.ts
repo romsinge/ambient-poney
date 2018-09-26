@@ -25,4 +25,8 @@ export class PmuService {
   getRaceById(id: number): Observable<Race> {
     return this.http.get(`${this.API}races/${id}`).pipe(map(race => <Race>race))
   }
+
+  setRace(race: Race): Observable<Race> {
+    return this.http.post(`${this.API}races`, race).pipe(map(race => <Race>race))
+  }
 }

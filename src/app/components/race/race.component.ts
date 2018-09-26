@@ -30,10 +30,12 @@ export class RaceComponent implements OnInit {
     this.route.params
     .pipe(map((urlParams) => urlParams.id))
     .subscribe((id) => { 
+
       this.pmu.getRaceById(id).subscribe(race => {
         this.race = race
         this.poneyIds = race.poneyIds
       })
+      
     })
 
     this.ponies$ = this.pmu.ponies

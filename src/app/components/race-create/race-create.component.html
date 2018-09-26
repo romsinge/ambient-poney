@@ -1,3 +1,23 @@
-<p>
-  race-create works!
-</p>
+<h1>Créer une course</h1>
+
+<form (submit)="handleSubmit()" [formGroup]="raceForm">
+
+  <mat-form-field>
+    <input [formControl]="nameCtrl" matInput placeholder="Name">
+  </mat-form-field>
+  {{ nameCtrl.errors && nameCtrl.errors.required && nameCtrl.touched ? 'Ce champ est requis' : '' }}
+
+  <br />
+
+  <mat-form-field>
+    <mat-select [formControl]="poneyIdsCtrl" placeholder="Ponies" multiple>
+      <mat-option *ngFor="let poney of ponies$ | async" [value]="poney.id">
+        {{ poney.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br />
+
+  <button mat-raised-button color="primary" [disabled]="raceForm.invalid">Create</button>
+</form>

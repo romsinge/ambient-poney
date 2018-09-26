@@ -33,12 +33,26 @@
     {
       "id": 0,
       "name": "Madrid",
-      "poneyIds": [0, 1]
+      "poneyIds": [
+        0,
+        1
+      ]
     },
     {
       "id": 1,
       "name": "Tokyo",
-      "poneyIds": [2, 3]
+      "poneyIds": [
+        2,
+        3
+      ]
+    },
+    {
+      "name": "Paris",
+      "poneyIds": [
+        2,
+        3
+      ],
+      "id": 2
     }
   ]
 }
