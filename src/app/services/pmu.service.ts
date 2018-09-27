@@ -35,4 +35,8 @@ export class PmuService {
   setRace(race: Race): Observable<Race> {
     return this.http.post(`${this.API}races`, race).pipe(map(race => <Race>race))
   }
+
+  deleteRace(id: number): Observable<Object> {
+    return this.http.delete(`${this.API}races/${id}`)
+  }
 }

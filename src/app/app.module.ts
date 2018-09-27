@@ -1,3 +1,4 @@
+import { RaceEffects } from './effects/race.effects';
 import { APP_ROUTES } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -19,6 +20,7 @@ import { RaceCreateComponent } from './components/race-create/race-create.compon
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './reducers/race.reducer'
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,7 @@ import { reducer } from './reducers/race.reducer'
     BoostDirective,
     RaceComponent,
     ClonePipe,
-    FilterPoniesPipe,
-    HomeComponent,
-    RaceCreateComponent
+    FilterPoniesPipe
   ],
   imports: [
     BrowserModule,
@@ -38,10 +38,10 @@ import { reducer } from './reducers/race.reducer'
     MaterialModule,
     RouterModule.forRoot(APP_ROUTES),
     HttpClientModule,
-    ReactiveFormsModule,
     StoreModule.forRoot({
       race: reducer
-    })
+    }),
+    EffectsModule.forRoot([RaceEffects])
   ],
   providers: [
     UpperCasePipe

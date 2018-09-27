@@ -1,3 +1,4 @@
+import { PmuService } from './../../services/pmu.service';
 import { AppState } from './../../app.state';
 import { Component, OnInit } from '@angular/core';
 import { Race } from '../../interfaces/race';
@@ -14,9 +15,13 @@ export class HomeComponent implements OnInit {
 
   races$: Observable<Race[]>
 
-  constructor(private store: Store<AppState>) {}
+  constructor(
+    private store: Store<AppState>,
+    private pmu: PmuService
+  ) {}
 
   ngOnInit() {
+    console.log('bonjour')
     this.races$ = this.store.select('race')
   }
 

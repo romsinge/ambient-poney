@@ -52,7 +52,7 @@ export class RaceCreateComponent implements OnInit {
     //   console.log('OK', race)
     // })
 
-    this.store.dispatch(new RaceActions.AddRace({...this.raceForm.value, id: Math.random() * 1000}))
+    this.store.dispatch(new RaceActions.AddRace({...this.raceForm.value, id: Math.floor(Math.random() * 1000)}))
   }
 
 }

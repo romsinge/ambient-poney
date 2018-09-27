@@ -9,6 +9,6 @@ export const getRaceById = (id) => {
     console.log(races)
     return races.find(race => race.id == id)
 
-  }
+  })
 
 }
