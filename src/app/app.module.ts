@@ -17,6 +17,8 @@ import { HomeComponent } from './components/home/home.component';
 import { RouterModule } from '@angular/router';
 import { RaceCreateComponent } from './components/race-create/race-create.component';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './reducers/race.reducer'
 
 @NgModule({
   declarations: [
@@ -36,7 +38,10 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     RouterModule.forRoot(APP_ROUTES),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({
+      race: reducer
+    })
   ],
   providers: [
     UpperCasePipe

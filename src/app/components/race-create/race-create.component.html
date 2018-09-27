@@ -21,3 +21,9 @@
 
   <button mat-raised-button color="primary" [disabled]="raceForm.invalid">Create</button>
 </form>
+
+<ul>
+  <li *ngFor="let race of races$ | async">
+    {{ race.name }}
+  </li>
+</ul>
