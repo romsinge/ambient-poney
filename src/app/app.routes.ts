@@ -16,6 +16,10 @@ export const APP_ROUTES: Routes = [
     loadChildren: './modules/race-create/race-create.module#RaceCreateModule'
   },
   {
+    path: 'admin',
+    loadChildren: './modules/admin/admin.module#AdminModule'
+  },
+  {
     path: 'race',
     redirectTo: 'home',
     pathMatch: 'full'
