@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfirmService } from '../services/confirm.service';
 
 @Component({
   selector: 'amb-admin',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(public confirm: ConfirmService) { }
 
   ngOnInit() {
   }

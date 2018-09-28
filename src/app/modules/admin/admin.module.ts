@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin/admin.component';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    MaterialModule
   ],
-  declarations: [AdminComponent]
+  declarations: [AdminComponent, ConfirmComponent]
 })
 export class AdminModule { }

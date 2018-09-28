@@ -1,6 +1,8 @@
 <ul>
-  <li [routerLink]="['/race', race.id]" *ngFor="let race of races$ | async">
-    {{ race.name }}
+  <li *ngFor="let race of races$ | async">
+    <span [routerLink]="['/race', race.id]">
+      {{ race.name }}
+    </span>
     <button mat-button (click)="deleteRace(race.id)">Delete</button>
   </li>
 </ul>
