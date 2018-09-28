@@ -22,8 +22,34 @@ import { reducer } from './reducers/race.reducer'
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import localeFr from '@angular/common/locales/fr'
+import { TranslationModule, L10nConfig, ProviderType, L10nLoader } from 'angular-l10n'
 
 registerLocaleData(localeFr, 'fr')
+
+let l10nConfig: L10nConfig = {
+  locale: {
+    languages: [
+      {
+        code: 'en',
+        dir: 'ltr'
+      },
+      {
+        code: 'fr',
+        dir: 'ltr'
+      }
+    ],
+    language: 'en'
+  },
+  translation: {
+    providers: [
+      {
+        type: ProviderType.Static,
+        prefix: './assets/locale-'
+      }
+    ],
+    missingValue: 'No key'
+  }
+}
 
 @NgModule({
   declarations: [
@@ -48,7 +74,8 @@ registerLocaleData(localeFr, 'fr')
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
-    })
+    }),
+    TranslationModule.forRoot(l10nConfig)
   ],
   providers: [
     UpperCasePipe,
@@ -56,4 +83,10 @@ registerLocaleData(localeFr, 'fr')
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(public l10nLoader: L10nLoader) {
+    this.l10nLoader.load()
+  }
+
+}

@@ -5,6 +5,7 @@ import { Race } from './interfaces/race';
 import { Store } from '@ngrx/store';
 import { AppState } from './app.state';
 import * as RaceActions from './actions/race.actions'
+import { Language, TranslationService, LocaleService } from 'angular-l10n';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,13 @@ import * as RaceActions from './actions/race.actions'
 })
 export class AppComponent {
   title = 'AmbientIT';
+  @Language() lang: string
 
   constructor(
     private pmu: PmuService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private translation: TranslationService,
+    private localeService: LocaleService
   ) {}
 
   ngOnInit() {
@@ -31,5 +35,9 @@ export class AppComponent {
 
   getDate(): Date {
     return new Date()
+  }
+
+  translate(lang: string) {
+    this.localeService.setCurrentLanguage(lang)
   }
 }

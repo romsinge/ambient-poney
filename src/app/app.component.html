@@ -1,6 +1,10 @@
 <mat-toolbar color="primary">Welcome to {{ title }}! - {{ getDate() | date:'dd MMMM yyyy hh:mm:ss' }}</mat-toolbar>
 
-<h1 i18n="hello|Bonjour">Hello</h1>
+<!-- <h1 i18n="hello|Bonjour">{{ 'hello' | translate:lang }}</h1> -->
+<h1 l10nTranslate>hello</h1>
+
+<button mat-button (click)="translate('en')"> Anglais </button>
+<button mat-button (click)="translate('fr')"> Français </button>
 
 <!-- <p *ngFor="let poney of ponies">{{ poney | clone }}</p>
 
